@@ -1,10 +1,10 @@
 import logo from "../assets/images/logo.svg";
 import main from "../assets/images/main.svg";
-import React from "react";
+import Wrapper from "../assets/wrappers/LandingPage";
 
 const Landing = () => {
   return (
-    <main>
+    <Wrapper>
       <nav>
         <img src={logo} alt="jobify logo" className="logo" />
       </nav>
@@ -25,7 +25,7 @@ const Landing = () => {
         </div>
         <img src={main} alt="job hunt" className="img main-img" />
       </div>
-    </main>
+    </Wrapper>
   );
 };
 
