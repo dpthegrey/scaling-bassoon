@@ -4,7 +4,7 @@ const errorHandlerMiddleware = (err, req, res, next) => {
   console.log(err);
   const defaultError = {
     statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
-    message: "Internal Server Error",
+    msg: "Internal Server Error",
   };
   if (err.name === "ValidationError") {
     defaultError.statusCode = StatusCodes.BAD_REQUEST;
@@ -12,6 +12,10 @@ const errorHandlerMiddleware = (err, req, res, next) => {
     defaultError.msg = Object.values(err.errors)
       .map((error) => error.message)
       .join(", ");
+  }
+  if (err.code && err.code === 11000) {
+    defaultError.statusCode = StatusCodes.BAD_REQUEST;
+    defaultError.msg = `${Object.keys(err.keyValue)} field has to be unique`;
   }
   // res.status(defaultError.statusCode).json({ msg: err });
   res.status(defaultError.statusCode).json({ msg: defaultError.msg });
