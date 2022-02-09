@@ -7,7 +7,7 @@ const SharedLayout = () => {
     <Wrapper>
       <nav>
         <Link to="add-job">add job</Link>
-        <Link to="all-job">all job</Link>
+        <Link to="all-jobs">all jobs</Link>
       </nav>
       <Outlet />
     </Wrapper>
