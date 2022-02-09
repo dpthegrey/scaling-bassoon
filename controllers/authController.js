@@ -33,7 +33,6 @@ const login = async (req, res) => {
     throw new BadRequestError("Please provide all required fields");
   }
   const user = await User.findOne({ email }).select("+password");
-
   if (!user) {
     throw new UnAuthenticatedError("Invalid email or password");
   }
