@@ -3,8 +3,10 @@ import Wrapper from "../assets/wrappers/Navbar";
 import { FaAlignLeft, FaUserCircle, FaCaretDown } from "react-icons/fa";
 import { useAppContext } from "../context/appContext";
 import Logo from "./Logo.js";
+import { useState } from "react";
 
 const Navbar = () => {
+  const [showLogout, setShowLogout] = useState(false);
   const { toggleSidebar } = useAppContext();
   return (
     <Wrapper>
@@ -21,14 +23,14 @@ const Navbar = () => {
             type="button"
             className="btn"
             onClick={() => {
-              console.log("show/hide dropdown");
+              setShowLogout(!showLogout);
             }}
           >
             <FaUserCircle />
             john
             <FaCaretDown />
           </button>
-          <div className="dropdown show-dropdown">
+          <div className={showLogout ? "dropdown show-dropdown" : "dropdown"}>
             <button
               type="button"
               className="dropdown-btn"
