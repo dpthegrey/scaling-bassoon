@@ -45,7 +45,7 @@ const AppProvider = ({ children }) => {
   const authFetch = axios.create({
     baseURL: "/api/v1",
   });
-  // response interceptor
+  // request interceptor
   authFetch.interceptors.request.use(
     (config) => {
       config.headers.common["Authorization"] = `Bearer ${state.token}`;
@@ -64,6 +64,7 @@ const AppProvider = ({ children }) => {
       console.log(error.response);
       if (error.response.status === 401) {
         console.log("AUTH ERROR");
+        logoutUser();
       }
       return Promise.reject(error);
     }
@@ -170,13 +171,15 @@ const AppProvider = ({ children }) => {
     try {
       const { data } = await authFetch.patch("/auth/updateUser", currentUser);
 
-      const { user, location, token } = data;
+      // no token
+      const { user, location } = data;
 
       dispatch({
         type: UPDATE_USER_SUCCESS,
         payload: { user, location, token },
       });
-      addUserToLocalStorage({ user, location, token });
+
+      addUserToLocalStorage({ user, location, token: initialState.token });
     } catch (error) {
       if (error.response.status !== 401) {
         dispatch({
