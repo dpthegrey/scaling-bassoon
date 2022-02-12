@@ -1,16 +1,19 @@
 import {
   CLEAR_ALERT,
   DISPLAY_ALERT,
+  SETUP_USER_BEGIN,
+  SETUP_USER_SUCCESS,
+  SETUP_USER_ERROR,
   REGISTER_USER_BEGIN,
   REGISTER_USER_SUCCESS,
   REGISTER_USER_ERROR,
   LOGIN_USER_BEGIN,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_ERROR,
+  UPDATE_USER_BEGIN,
+  UPDATE_USER_SUCCESS,
+  UPDATE_USER_ERROR,
   LOGOUT_USER,
-  SETUP_USER_BEGIN,
-  SETUP_USER_SUCCESS,
-  SETUP_USER_ERROR,
   TOGGLE_SIDEBAR,
 } from "./actions";
 
@@ -31,6 +34,34 @@ const reducer = (state, action) => {
       showAlert: false,
       alertType: "",
       alertText: "",
+    };
+  }
+  if (action.type === SETUP_USER_BEGIN) {
+    return {
+      ...state,
+      isLoading: true,
+    };
+  }
+  if (action.type === SETUP_USER_SUCCESS) {
+    return {
+      ...state,
+      isLoading: true,
+      token: action.payload.token,
+      user: action.payload.user,
+      userLocation: action.payload.location,
+      jobLocation: action.payload.location,
+      showAlert: true,
+      alertType: "success",
+      alertText: action.payload.alertText,
+    };
+  }
+  if (action.type === SETUP_USER_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: "danger",
+      alertText: action.payload.msg,
     };
   }
   if (action.type === REGISTER_USER_BEGIN) {
@@ -90,26 +121,24 @@ const reducer = (state, action) => {
     };
   }
 
-  if (action.type === SETUP_USER_BEGIN) {
-    return {
-      ...state,
-      isLoading: true,
-    };
+  if (action.type === UPDATE_USER_BEGIN) {
+    return { ...state, isLoading: true };
   }
-  if (action.type === SETUP_USER_SUCCESS) {
+
+  if (action.type === UPDATE_USER_SUCCESS) {
     return {
       ...state,
-      isLoading: true,
+      isLoading: false,
       token: action.payload.token,
       user: action.payload.user,
       userLocation: action.payload.location,
       jobLocation: action.payload.location,
       showAlert: true,
       alertType: "success",
-      alertText: action.payload.alertText,
+      alertText: "User Profile Updated!",
     };
   }
-  if (action.type === SETUP_USER_ERROR) {
+  if (action.type === UPDATE_USER_ERROR) {
     return {
       ...state,
       isLoading: false,

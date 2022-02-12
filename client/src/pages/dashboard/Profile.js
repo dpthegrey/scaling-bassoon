@@ -60,5 +60,4 @@ const Profile = () => {
     </Wrapper>
   );
 };
-
 export default Profile;
