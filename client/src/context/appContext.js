@@ -19,6 +19,7 @@ import {
   TOGGLE_SIDEBAR,
   LOGOUT_USER,
   HANDLE_CHANGE,
+  CLEAR_VALUES,
 } from "./actions";
 
 const token = localStorage.getItem("token");
@@ -207,6 +208,10 @@ const AppProvider = ({ children }) => {
     });
   };
 
+  const clearValues = () => {
+    dispatch({ type: CLEAR_VALUES });
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -219,6 +224,7 @@ const AppProvider = ({ children }) => {
         toggleSidebar,
         updateUser,
         handleChange,
+        clearValues,
       }}
     >
       {children}
