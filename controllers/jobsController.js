@@ -40,11 +40,20 @@ const updateJob = async (req, res) => {
 
   // check permissions
 
+  // findOneAndUpdate does not trigger hook
   const updatedJob = await Job.findOneAndUpdate({ _id: jobId }, req.body, {
     new: true,
     runValidators: true,
   });
 
+  /*
+  /////// alternative approach (triggers the hook) ///////
+  job.position = position
+  job.company = company
+  job.jobLocation = jobLocation
+
+  await job.save()
+ */
   res.status(StatusCodes.OK).json({ updatedJob });
 };
 
