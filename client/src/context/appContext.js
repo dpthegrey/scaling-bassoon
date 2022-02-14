@@ -18,6 +18,7 @@ import {
   UPDATE_USER_ERROR,
   TOGGLE_SIDEBAR,
   LOGOUT_USER,
+  HANDLE_CHANGE,
 } from "./actions";
 
 const token = localStorage.getItem("token");
@@ -199,6 +200,13 @@ const AppProvider = ({ children }) => {
     clearAlert();
   };
 
+  const handleChange = ({ name, value }) => {
+    dispatch({
+      type: HANDLE_CHANGE,
+      payload: { name, value },
+    });
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -210,6 +218,7 @@ const AppProvider = ({ children }) => {
         setupUser,
         toggleSidebar,
         updateUser,
+        handleChange,
       }}
     >
       {children}
