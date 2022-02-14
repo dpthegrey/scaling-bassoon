@@ -1,4 +1,4 @@
-import React, { useReducer, useContext, useEffect } from 'react'
+import React, { useReducer, useContext, useEffect } from "react";
 import reducer from "./reducer";
 import axios from "axios";
 import {
@@ -49,10 +49,10 @@ const initialState = {
   jobType: "full-time",
   statusOptions: ["pending", "interview", "declined"],
   status: "pending",
-  jobs:[],
-  totalJobs=0,
-  numOfPages:1,
-  page=1,
+  jobs: [],
+  totalJobs: 0,
+  numOfPages: 1,
+  page: 1,
 };
 
 const AppContext = React.createContext();
@@ -248,15 +248,13 @@ const AppProvider = ({ children }) => {
     clearAlert();
   };
 
-
-
   const getJobs = async () => {
-    let url = `/jobs`
-  
-    dispatch({ type: GET_JOBS_BEGIN })
+    let url = `/jobs`;
+
+    dispatch({ type: GET_JOBS_BEGIN });
     try {
-      const { data } = await authFetch(url)
-      const { jobs, totalJobs, numOfPages } = data
+      const { data } = await authFetch(url);
+      const { jobs, totalJobs, numOfPages } = data;
       dispatch({
         type: GET_JOBS_SUCCESS,
         payload: {
@@ -264,18 +262,17 @@ const AppProvider = ({ children }) => {
           totalJobs,
           numOfPages,
         },
-      })
+      });
     } catch (error) {
-      console.log(error.response)
-      logoutUser()
+      console.log(error.response);
+      logoutUser();
     }
-    clearAlert()
-  }
-  
-  useEffect(() => {
-    getJobs()
-  }, [])
+    clearAlert();
+  };
 
+  useEffect(() => {
+    getJobs();
+  }, []);
 
   return (
     <AppContext.Provider
