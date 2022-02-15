@@ -1,5 +1,5 @@
 import { useAppContext } from "../context/appContext";
-import StatItem from "./StatItem";
+import StatItem from "./StatItem.js";
 import { FaSuitcaseRolling, FaCalendarCheck, FaBug } from "react-icons/fa";
 import Wrapper from "../assets/wrappers/StatsContainer";
 const StatsContainer = () => {

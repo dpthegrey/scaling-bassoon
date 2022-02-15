@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-import BarChart from "./BarChart";
-import AreaChart from "./AreaChart";
-import { useAppContext } from "../context/appContext";
-import Wrapper from "../assets/wrappers/ChartsContainer";
+import BarChart from "./BarChart.js";
+import AreaChart from "./AreaChart.js";
+import { useAppContext } from "../context/appContext.js";
+import Wrapper from "../assets/wrappers/ChartsContainer.js";
 
 export default function ChartsContainer() {
   const [barChart, setBarChart] = useState(true);

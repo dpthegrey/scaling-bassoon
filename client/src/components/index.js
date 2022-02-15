@@ -1,20 +1,19 @@
-import Alert from "../components/Alert";
-import FormRow from "./FormRow";
-import Logo from "../components/Logo";
-import Navbar from "./Navbar";
+import Alert from "./Alert";
 import BigSidebar from "./BigSidebar";
-import SmallSidebar from "./SmallSidebar";
-import FormRowSelect from "./FormRowSelect";
-import SearchContainer from "./SearchContainer";
-import JobsContainer from "./JobsContainer";
-import StatsContainer from "./StatsContainer";
 import ChartsContainer from "./ChartsContainer";
-import StatsItem from "./StatsItem";
-
+import FormRow from "./FormRow";
+import FormRowSelect from "./FormRowSelect";
+import JobsContainer from "./JobsContainer";
+import Loading from "./Loading";
+import Logo from "./Logo";
+import Navbar from "./Navbar";
+import SearchContainer from "./SearchContainer";
+import SmallSidebar from "./SmallSidebar";
+import StatsContainer from "./StatsContainer";
 export {
-  Alert,
-  FormRow,
   Logo,
+  FormRow,
+  Alert,
   Navbar,
   BigSidebar,
   SmallSidebar,
@@ -23,5 +22,5 @@ export {
   JobsContainer,
   StatsContainer,
   ChartsContainer,
-  StatsItem,
+  Loading,
 };
