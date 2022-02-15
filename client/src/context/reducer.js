@@ -304,6 +304,11 @@ const reducer = (state, action) => {
     return { ...state, page: action.payload.page };
   }
 
+  if (action.type === HANDLE_CHANGE) {
+    // set back to first page
+
+    return { ...state, page: 1, [action.payload.name]: action.payload.value };
+  }
   throw new Error(`no such action : ${action.type}`);
 };
 
