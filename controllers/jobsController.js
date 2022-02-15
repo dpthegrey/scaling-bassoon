@@ -24,6 +24,10 @@ const getAllJobs = async (req, res) => {
     createdBy: req.user.userId,
   };
 
+  if (status !== "all") {
+    queryObject.status = status;
+  }
+
   // NO AWAIT
   let result = Job.find(queryObject);
 
@@ -35,7 +39,6 @@ const getAllJobs = async (req, res) => {
     .status(StatusCodes.OK)
     .json({ jobs, totalJobs: jobs.length, numOfPages: 1 });
 };
-
 const updateJob = async (req, res) => {
   const { id: jobId } = req.params;
 
