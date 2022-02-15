@@ -19,24 +19,20 @@ const createJob = async (req, res) => {
 
 const getAllJobs = async (req, res) => {
   const { search, status, jobType, sort } = req.query;
-
   const queryObject = {
     createdBy: req.user.userId,
   };
-
+  if (search) {
+    queryObject.position = { $regex: search, $options: "i" };
+  }
   if (status !== "all") {
     queryObject.status = status;
   }
   if (jobType !== "all") {
     queryObject.jobType = jobType;
   }
-  if (search) {
-    queryObject.position = { $regex: search, $options: "i" };
-  }
-  // NO AWAIT
   let result = Job.find(queryObject);
 
-  // chain sort conditions
   if (sort === "latest") {
     result = result.sort("-createdAt");
   }
@@ -49,8 +45,17 @@ const getAllJobs = async (req, res) => {
   if (sort === "z-a") {
     result = result.sort("-position");
   }
-  const jobs = await result;
 
+  const totalJobs = await result;
+
+  // setup pagination
+  const limit = 10;
+  const skip = 1;
+
+  result = result.skip(skip).limit(limit);
+  // 23
+  // 4 7 7 7 2
+  const jobs = await result;
   res
     .status(StatusCodes.OK)
     .json({ jobs, totalJobs: jobs.length, numOfPages: 1 });
