@@ -34,13 +34,12 @@ const Job = ({
           <JobInfo icon={<FaBriefcase />} text={jobType} />
           <div className={`status ${status}`}>{status}</div>
         </div>
-        {/* footer content */}
         <footer>
           <div className="actions">
             <Link
               to="/add-job"
-              onClick={() => setEditJob(_id)}
               className="btn edit-btn"
+              onClick={() => setEditJob(_id)}
             >
               Edit
             </Link>

@@ -1,7 +1,7 @@
 import main from "../assets/images/main.svg";
 import Wrapper from "../assets/wrappers/LandingPage";
 import { Logo } from "../components";
-
+import { Link } from "react-router-dom";
 const Landing = () => {
   return (
     <Wrapper>
@@ -9,19 +9,20 @@ const Landing = () => {
         <Logo />
       </nav>
       <div className="container page">
+        {/* info */}
         <div className="info">
-          {/* info */}
           <h1>
-            Job <span>tracking</span> app
+            job <span>tracking</span> app
           </h1>
           <p>
-            Drinking vinegar echo park direct trade austin, snackwave tofu
-            humblebrag kogi plaid tbh. Pitchfork ugh cornhole banjo,
-            lumbersexual la croix distillery gastropub fanny pack kogi. Neutra
-            tofu hammock church-key you probably haven't heard of them PBR&B
-            beard.
+            I'm baby wayfarers hoodie next level taiyaki brooklyn cliche blue
+            bottle single-origin coffee chia. Aesthetic post-ironic venmo,
+            quinoa lo-fi tote bag adaptogen everyday carry meggings +1 brunch
+            narwhal.
           </p>
-          <button className="btn btn-hero">Get started</button>
+          <Link to="/register" className="btn btn-hero">
+            Login/Register
+          </Link>
         </div>
         <img src={main} alt="job hunt" className="img main-img" />
       </div>

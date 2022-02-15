@@ -6,9 +6,8 @@ const auth = async (req, res, next) => {
 
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     throw new UnAuthenticatedError("Authentication Invalid.");
-  } 
-    const token = authHeader.substring(7, authHeader.length);
-  
+  }
+  const token = authHeader.substring(7, authHeader.length);
 
   try {
     const payload = jwt.verify(token, process.env.JWT_SECRET);

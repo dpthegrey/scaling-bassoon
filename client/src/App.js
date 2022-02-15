@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Error, Landing, Register, ProtectedRoute } from "./pages";
+import { Register, Landing, Error, ProtectedRoute } from "./pages";
 import {
-  AddJob,
   AllJobs,
   Profile,
   SharedLayout,
   Stats,
+  AddJob,
 } from "./pages/dashboard";
 
 function App() {

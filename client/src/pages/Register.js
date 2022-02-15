@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { Alert, Logo, FormRow } from "../components";
+import { useState, useEffect } from "react";
+import { Logo, FormRow, Alert } from "../components";
 import Wrapper from "../assets/wrappers/RegisterPage";
 import { useAppContext } from "../context/appContext";
 import { useNavigate } from "react-router-dom";
-
 const initialState = {
   name: "",
   email: "",
@@ -46,6 +45,7 @@ const Register = () => {
       });
     }
   };
+
   useEffect(() => {
     if (user) {
       setTimeout(() => {
@@ -63,7 +63,7 @@ const Register = () => {
         {/* name input */}
         {!values.isMember && (
           <FormRow
-            type="type"
+            type="text"
             name="name"
             value={values.name}
             handleChange={handleChange}
@@ -77,7 +77,6 @@ const Register = () => {
           value={values.email}
           handleChange={handleChange}
         />
-
         {/* password input */}
         <FormRow
           type="password"
@@ -85,14 +84,11 @@ const Register = () => {
           value={values.password}
           handleChange={handleChange}
         />
-
         <button type="submit" className="btn btn-block" disabled={isLoading}>
           Submit
         </button>
         <p>
-          {values.isMember
-            ? "Don't have an account?"
-            : "Already have an account?"}
+          {values.isMember ? "Not a member yet?" : "Already a member?"}
           <button type="button" onClick={toggleMember} className="member-btn">
             {values.isMember ? "Register" : "Login"}
           </button>
@@ -101,5 +97,4 @@ const Register = () => {
     </Wrapper>
   );
 };
-
 export default Register;

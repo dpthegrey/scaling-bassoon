@@ -1,7 +1,6 @@
-import AddJob from "./AddJob.js";
-import AllJobs from "./AllJobs.js";
-import Profile from "./Profile.js";
-import Stats from "./Stats.js";
-import SharedLayout from "./SharedLayout.js";
-
-export { AddJob, AllJobs, Profile, SharedLayout, Stats };
+import AddJob from "./AddJob";
+import AllJobs from "./AllJobs";
+import Profile from "./Profile";
+import SharedLayout from "./SharedLayout";
+import Stats from "./Stats";
+export { AllJobs, Profile, SharedLayout, Stats, AddJob };
