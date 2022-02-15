@@ -266,8 +266,8 @@ const AppProvider = ({ children }) => {
 
   const getJobs = async () => {
     // will add page later
-    const { search, searchStatus, searchType, sort } = state;
-    let url = `/jobs?status=${searchStatus}&jobType=${searchType}&sort=${sort}`;
+    const { page, search, searchStatus, searchType, sort } = state;
+    let url = `/jobs?page=${page}&status=${searchStatus}&jobType=${searchType}&sort=${sort}`;
     if (search) {
       url = url + `&search=${search}`;
     }
@@ -350,7 +350,7 @@ const AppProvider = ({ children }) => {
     dispatch({ type: CLEAR_FILTERS });
   };
 
-  const changePage = () => {
+  const changePage = (page) => {
     dispatch({ type: CHANGE_PAGE, payload: { page } });
   };
 
